@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+
+# Caches de herramientas
+.mypy_cache/
+.ruff_cache/
+
+# Editor y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+
+# Configuracion personal de Claude Code (las skills en .claude/skills si se versionan)
+.claude/settings.local.json
+
+# Grabaciones de practica
+resultados/
