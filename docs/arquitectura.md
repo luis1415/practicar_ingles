@@ -1,6 +1,6 @@
 # Arquitectura
 
-El proyecto es un único script, `practicar.py`, con cuatro pasos en secuencia.
+El proyecto es un único script, `practicar.py`, con cinco pasos en secuencia.
 
 ```mermaid
 flowchart LR
@@ -8,6 +8,7 @@ flowchart LR
     B -->|numpy float32| C[transcribir<br/>faster-whisper, local]
     C -->|texto| D[corregir<br/>claude -p]
     D -->|Markdown| E[guardar<br/>resultados/ultima_practica.md]
+    D -->|Markdown| F[leer_consejo<br/>claude -p y say]
 ```
 
 ## Componentes
@@ -49,6 +50,11 @@ contexto del repositorio.
 
 ### `guardar(transcripcion, correcciones, pregunta)`
 Escribe el Markdown final en `RESULT_FILE` y sobrescribe el anterior.
+
+### `leer_consejo(transcripcion, correcciones)`
+Pide a Claude, con `TUTOR_PROMPT`, una recomendación breve en inglés y la lee con el comando
+`say` de macOS y la voz `TUTOR_VOICE`. Solo se muestra en la terminal y se oye: no se guarda
+en el Markdown. Es opcional, así que si falla avisa y el script termina con normalidad.
 
 ## Decisiones de diseño
 

@@ -57,6 +57,9 @@ Contiene:
 - **Consejo para la entrevista**: sugerencias sobre el contenido o la estructura (por
   ejemplo, el método STAR).
 
+Al final, después de guardar, un tutor lee en voz alta y en inglés una recomendación breve.
+Esa recomendación se muestra en la terminal, pero no se guarda en el archivo.
+
 ## Skills de Claude Code
 
 Si abres Claude Code dentro de esta carpeta, tienes dos comandos extra:
@@ -86,3 +89,5 @@ Las constantes están al principio de `practicar.py`:
 | `WHISPER_MODEL` | `small.en` | `base.en` si la transcripción es lenta; `medium.en` si se pierden palabras o errores (más lento, ~1.5 GB). |
 | `RESULT_FILE` | `resultados/ultima_practica.md` | Si quieres guardar el resultado en otra carpeta. |
 | `SYSTEM_PROMPT` | Instrucciones del coach | Para cambiar el idioma de las explicaciones, las secciones o el nivel de exigencia. |
+| `TUTOR_VOICE` | `Samantha` | Para usar otra voz en inglés. Puedes ver las disponibles con `say -v '?'`. |
+| `TUTOR_PROMPT` | Instrucciones del tutor | Para cambiar el tono o la duración de la recomendación hablada. |
