@@ -30,7 +30,7 @@ La primera ejecución:
 ## Practicar una respuesta
 
 ```bash
-uv run practicar.py --pregunta "Tell me about yourself"
+uv run practice --question "Tell me about yourself"
 ```
 
 1. Presiona **Enter** para empezar a grabar.
@@ -38,8 +38,31 @@ uv run practicar.py --pregunta "Tell me about yourself"
 3. Presiona **Enter** otra vez para terminar.
 4. Espera la transcripción (unos segundos) y las correcciones (entre 20 segundos y 1 minuto).
 
-`--pregunta` (o `-p`) es opcional, pero conviene usarlo: con la pregunta, Claude puede
+`--question` (o `-q`) es opcional, pero conviene usarlo: con la pregunta, Claude puede
 opinar también sobre si tu respuesta la contesta bien. Sin ella, solo revisa el idioma.
+
+## Conversar con el tutor en una ventana
+
+```bash
+uv run tutor
+```
+
+La ventana está en inglés y se adapta al modo claro u oscuro de tu Mac.
+
+1. En el panel izquierdo, escribe un tema o una pregunta si quieres, en **Topic or question**.
+2. Elige la cantidad de respuestas con **−** y **+** en **Turns**: de 1 a 10, con 3 por defecto.
+   No se puede cambiar una vez que empieza la entrevista.
+3. Presiona **Start interview**. El tutor lee su pregunta en voz alta.
+4. Responde con **Record** y **Stop and send**, o escribe y presiona **Send** o Enter (Shift+Enter
+   agrega una línea). Puedes elegir en cada turno.
+5. Las correcciones de cada respuesta aparecen a la derecha, en español, mientras la entrevista sigue.
+6. Al terminar los turnos, el tutor lee un consejo final y se guarda el resultado. Ábrelo con
+   **Open report**.
+
+Si una pregunta del tutor falla, tu respuesta vuelve al cuadro de texto para que la envíes otra vez.
+
+El resultado usa el mismo archivo que `uv run practice`, así que también reemplaza la práctica
+anterior y `/repasar-practica` funciona igual.
 
 ## El resultado
 
@@ -73,21 +96,31 @@ Una sesión típica:
 
 ```text
 /pregunta-entrevista behavioral        → en Claude Code
-uv run practicar.py --pregunta "..."   → en tu terminal
+uv run practice --question "..."       → en tu terminal
 /repasar-practica                      → en Claude Code
 ```
 
-`practicar.py` se ejecuta siempre en tu terminal: necesita el micrófono y que presiones
-Enter, así que Claude Code no puede correrlo por ti.
+`uv run practice` y `uv run tutor` se ejecutan siempre fuera de Claude Code: usan el micrófono y
+necesitan que interactúes con ellos.
 
 ## Ajustes
 
-Las constantes están al principio de `practicar.py`:
+Los ajustes están en `src/interview_coach/config.py`:
 
 | Constante | Valor por defecto | Cuándo cambiarla |
 |---|---|---|
 | `WHISPER_MODEL` | `small.en` | `base.en` si la transcripción es lenta; `medium.en` si se pierden palabras o errores (más lento, ~1.5 GB). |
-| `RESULT_FILE` | `resultados/ultima_practica.md` | Si quieres guardar el resultado en otra carpeta. |
-| `SYSTEM_PROMPT` | Instrucciones del coach | Para cambiar el idioma de las explicaciones, las secciones o el nivel de exigencia. |
-| `TUTOR_VOICE` | `Samantha` | Para usar otra voz en inglés. Puedes ver las disponibles con `say -v '?'`. |
-| `TUTOR_PROMPT` | Instrucciones del tutor | Para cambiar el tono o la duración de la recomendación hablada. |
+| `REPORT_FILE` | `resultados/ultima_practica.md` | Si quieres guardar el resultado en otra carpeta. |
+| `TUTOR_VOICE` | `Samantha (Mejorada)` | Para usar otra voz en inglés. Puedes ver las disponibles con `say -v '?'`. |
+| `DEFAULT_TURNS`, `MIN_TURNS`, `MAX_TURNS` | `3`, `1`, `10` | Para cambiar los turnos por defecto o el rango del selector. |
+
+Los prompts están en `src/interview_coach/prompts.py`:
+
+| Constante | Cuándo cambiarla |
+|---|---|
+| `FEEDBACK_PROMPT` | Para cambiar el idioma de las explicaciones, las secciones o el nivel de exigencia del Markdown. |
+| `SPOKEN_ADVICE_PROMPT` | Para cambiar el tono o la duración de la recomendación hablada. |
+| `INTERVIEWER_PROMPT` | Para cambiar cómo pregunta el tutor. |
+| `TURN_CORRECTION_PROMPT` | Para cambiar las correcciones de cada turno. |
+
+Los colores y tamaños de la ventana están en `src/interview_coach/gui/theme.py`.

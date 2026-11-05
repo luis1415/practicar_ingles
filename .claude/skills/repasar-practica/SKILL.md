@@ -1,12 +1,12 @@
 ---
 name: repasar-practica
-description: Repasa la última práctica guardada en resultados/ultima_practica.md: resume los errores clave y propone ejercicios cortos para fijarlos. Usar cuando el usuario diga "repasa mi práctica", "qué hice mal", "ayúdame con mis errores" o "quiero ejercicios" después de correr practicar.py.
+description: Repasa la última práctica guardada en resultados/ultima_practica.md: resume los errores clave y propone ejercicios cortos para fijarlos. Usar cuando el usuario diga "repasa mi práctica", "qué hice mal", "ayúdame con mis errores" o "quiero ejercicios" después de practicar con `uv run practice` o `uv run tutor`.
 allowed-tools: Read
 ---
 
 # Repasar la última práctica
 
-1. Lee `resultados/ultima_practica.md`. Si no existe, dile al usuario que primero corra `uv run practicar.py` y termina.
+1. Lee `resultados/ultima_practica.md`. Si no existe, dile al usuario que primero practique con `uv run practice` o `uv run tutor` y termina.
 
 2. Responde en español (los ejemplos van en inglés) con:
 

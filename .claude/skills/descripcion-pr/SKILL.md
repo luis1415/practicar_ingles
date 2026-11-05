@@ -1,8 +1,8 @@
 ---
 name: descripcion-pr
-description: Genera la descripción de un pull request a partir de los commits y el diff de la rama actual, después de verificar que ruff y mypy pasan. Usar antes de hacer push o abrir un PR, cuando el usuario diga "descripción del PR", "prepara el PR", "voy a hacer push" o "qué pongo en el PR".
+description: Genera la descripción de un pull request a partir de los commits y el diff de la rama actual, después de verificar que ruff, mypy y pytest pasan. Usar antes de hacer push o abrir un PR, cuando el usuario diga "descripción del PR", "prepara el PR", "voy a hacer push" o "qué pongo en el PR".
 argument-hint: "[rama base, por defecto main]"
-allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(uv run ruff:*), Bash(uv run mypy:*), Read, Write
+allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(uv run ruff:*), Bash(uv run mypy:*), Bash(uv run pytest:*), Read, Write
 ---
 
 # Descripción del PR
@@ -11,7 +11,7 @@ allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git b
 
 2. **Revisa el estado:** corre `git status`. Si hay cambios sin commitear, avísale al usuario que no quedarán en el PR y pregunta si quiere commitearlos antes de seguir.
 
-3. **Verifica la calidad:** corre `uv run ruff format --check .`, `uv run ruff check .` y `uv run mypy .`. Si alguno falla, muestra los errores y recomienda corregirlos antes del push. Aun así genera la descripción si el usuario lo pide.
+3. **Verifica la calidad:** corre `uv run ruff format --check .`, `uv run ruff check .`, `uv run mypy .` y `uv run pytest`. Si alguno falla, muestra los errores y recomienda corregirlos antes del push. Aun así genera la descripción si el usuario lo pide.
 
 4. **Reúne el contexto:**
    - `git log --oneline <base>..HEAD` para los commits.
@@ -28,7 +28,7 @@ allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git b
      (por ejemplo, un cambio de versión de Python o una dependencia nueva) y su motivo.
 
    ## Cómo probarlo
-   - Comandos concretos (`uv sync`, `uv run practicar.py --pregunta "..."`, `uv run ruff check .`).
+   - Comandos concretos (`uv sync`, `uv run practice --question "..."`, `uv run tutor`, `uv run ruff check .`).
    - Si algo necesita micrófono o Claude Code con sesión iniciada, dilo.
 
    ## Notas

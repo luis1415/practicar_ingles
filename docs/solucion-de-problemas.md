@@ -14,10 +14,10 @@ uv run python -c "import sounddevice as sd; print(sd.query_devices())"
 ### La transcripción "corrige" mis errores
 Whisper tiende a escribir lo que se esperaría oír, no exactamente lo que dijiste, así que
 algunos errores (por ejemplo, "I have lead" → "I have") pueden no llegar a Claude. Si pasa
-seguido, cambia `WHISPER_MODEL` a `medium.en` en `practicar.py`, y habla a un ritmo normal,
+seguido, cambia `WHISPER_MODEL` a `medium.en` en `src/interview_coach/config.py`, y habla a un ritmo normal,
 sin pausas largas a mitad de frase.
 
-### "No se encontró el comando 'claude'"
+### "The 'claude' command was not found"
 Instala Claude Code e inicia sesión una vez de forma interactiva:
 
 ```bash

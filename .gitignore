@@ -13,6 +13,7 @@ wheels/
 # Caches de herramientas
 .mypy_cache/
 .ruff_cache/
+.pytest_cache/
 
 # Editor y sistema operativo
 .vscode/

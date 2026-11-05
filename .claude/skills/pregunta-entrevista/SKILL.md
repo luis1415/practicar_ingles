@@ -1,6 +1,6 @@
 ---
 name: pregunta-entrevista
-description: Genera una pregunta realista de entrevista en inglés para un ingeniero de sistemas (behavioral, técnica o de system design) y da el comando para practicarla con practicar.py. Usar cuando el usuario pida "dame una pregunta", "quiero practicar", "pregunta de entrevista" o un tema concreto (ej. "pregunta sobre microservicios").
+description: Genera una pregunta realista de entrevista en inglés para un ingeniero de sistemas (behavioral, técnica o de system design) y da el comando para practicarla con `uv run practice`. Usar cuando el usuario pida "dame una pregunta", "quiero practicar", "pregunta de entrevista" o un tema concreto (ej. "pregunta sobre microservicios").
 argument-hint: "[tipo o tema, ej. behavioral | technical | system design | kubernetes]"
 ---
 
@@ -27,7 +27,7 @@ El usuario es un ingeniero de sistemas hispanohablante que practica entrevistas 
 
    **Para practicarla, corre en tu terminal:**
    ```bash
-   uv run practicar.py --pregunta "<pregunta en inglés>"
+   uv run practice --question "<pregunta en inglés>"
    ```
 
-3. No ejecutes `practicar.py` tú mismo: necesita el micrófono y que el usuario presione Enter en su terminal.
+3. No ejecutes `uv run practice` tú mismo: necesita el micrófono y que el usuario presione Enter en su terminal.
